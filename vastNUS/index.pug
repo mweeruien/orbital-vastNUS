@@ -1,0 +1,30 @@
+extends layout
+
+block content
+
+  if courses.length
+    table
+      tr
+        th ID
+        th Course Name 
+        th Faculty
+        th RP Cut Off (JC)
+        th GPA Cut Off (Poly)
+        th Employment Rate
+        th Full Time Employment Rate
+        th Median Salary
+        th Details
+      each registration in registrations
+        tr
+          td = ID
+          td = Course Name 
+          td = Faculty 
+          td = RpCutOff 
+          td = GpaCutOff 
+          td = EmpRate 
+          td = FTEmpRate 
+          td = MedianSalary 
+          td = Details
+
+  else
+    p No results yet :(

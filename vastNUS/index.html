@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="TemplateMo">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
+
+    <title>vastNUS</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="template/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-host-cloud.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+<!--
+
+Host Cloud Template
+
+https://templatemo.com/tm-541-host-cloud
+
+-->
+  </head>
+
+  <body>
+
+    <!-- ***** Preloader Start ***** -->
+    <div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>  
+    <!-- ***** Preloader End ***** -->
+
+    <!-- Header -->
+    <header class="">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <a class="navbar-brand" href="index.html"><h2>vastNUS</h2></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="index.html">Home
+                  <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="faculties.html">Faculties</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="matriculation.html">Matriculation</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="forum.html" target="_blank">Forum</a>
+              </li>
+            </ul>
+          </div>
+          <div class="functional-buttons">
+            <ul>
+              <li><a href="#">Log in</a></li>
+              <li><a href="#">Sign Up</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Page Content -->
+    <!-- Banner Starts Here -->
+    <div class="banner">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 offset-md-2">
+            <div class="header-text caption">
+              <h2>Find your ideal course!</h2>
+              <div id="search-section">
+              	<form id="suggestion_form" name="gs" method="get" action="#">
+                <div class="searchText">
+                  
+                  <input type="text" name="q" class="searchText" placeholder="Enter keywords to search for relevant courses..." autocomplete="on">
+                  
+                  <ul>
+                    <!-- <li><label><input type="checkbox" name="ext_com" value="1"><span>.com <em>($10/yr)</em></span></label></li>
+                    <li><label><input type="checkbox" name="ext_net" value="1"><span>.net <em>($12/yr)</em></span></label></li>
+                    <li><label><input type="checkbox" name="ext_org" value="1"><span>.org <em>($8/yr)</em></span></label></li>
+                    <li><label><input type="checkbox" name="ext_in" value="1"><span>.in <em>($6/yr)</em></span></label></li> -->
+                    <li style="color:white"><label<form action="/action_page.php">
+                      <label for="sortingOptions">Sorted By:</label>
+                      <select id="sortingOptions" name="sortingOptions">
+                        <option value="Relevance">Relevance</option>
+                        <option value="Salary">Salary (High to Low)</option>
+                        <option value="Alphabetical">Alphabetical</option>
+                      </select>
+                    </form></label></li>
+
+                    <li style="color:white"><form>
+                      <label for="quantity">(Poly) GPA: </label>
+                      <input type="number" id="gpa" name="gpa" min="0" max="5" step = "0.1">
+                      <!-- input type="submit" -->
+                    </form></li>
+                    
+                    <li style="color:white"><form>
+                      <label for="quantity">(JC) IGP: </label>
+                      <input type="number" id="igp" name="igp" min="50" max="90" step = "1.25">
+                      <!-- input type="submit" -->
+                    </form></li>
+
+                    <!--
+                    <li style="color:white"><form action="/action_page.php">
+                      <label for="gradeProfile">(JC) Grade profile:</label>
+                      <select id="gradeProfile" name="gradeProfile">
+                        <option value="AAA/A">AAA/A</option>
+                        <option value="AAA/B">AAA/B</option>
+                        <option value="AAA/C">AAA/C</option>
+                        <option value="AAB/B">AAB/B</option>
+                        <option value="ABB/B">ABB/B</option>
+                        <option value="BBB/B">BBB/B</option>
+                        <option value="BBB/C">BBB/C</option>
+                        <option value="BBC/B">BBC/B</option>
+                        <option value="BBC/C">BBC/C</option>
+                        <option value="BCC/C">BCC/C</option>
+                        <option value="CCC/B">CCC/B</option>
+                        <option value="CCC/C">CCC/C</option>
+                        <option value="CCD/B">CCD/B</option>
+                      </select>
+                    </form></li>
+                  -->
+
+                    <li style="color:white"><form>
+                      <label for="quantity">Median salary: </label>
+                      <input type="number" id="mediansalary" name="mediansalary" min="0" max = "100000" step = "100">
+                      <!-- input type="submit" -->
+                    </form></li>
+
+                  </ul>
+                </div>
+                    <input type="submit" name="results" class="main-button" value="Search Now">
+                 </form>
+               <div class="advSearch_chkbox">
+               </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Banner Ends Here -->
+
+    <!-- Trusted Starts Here -->
+    <div class="trusted-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="trusted-section-heading">
+              <h4>Done by Megan and Sue-Ann</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Trusted Ends Here -->
+
+
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="template/jquery/jquery.min.js"></script>
+    <script src="template/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Additional Scripts -->
+    <script src="assets/js/custom.js"></script>
+    <script src="assets/js/owl.js"></script> 
+    <script src="assets/js/accordions.js"></script>
+
+
+    <script language = "text/Javascript"> 
+      cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
+      function clearField(t){                   //declaring the array outside of the
+      if(! cleared[t.id]){                      // function makes it static and global
+          cleared[t.id] = 1;  // you could use true and false, but that's more typing
+          t.value='';         // with more chance of typos
+          t.style.color='#fff';
+          }
+      }
+    </script>
+
+  </body>
+</html>

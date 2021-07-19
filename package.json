@@ -1,0 +1,28 @@
+{
+    "name": "vastnus",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "start": "node ./vastNUS/index.js"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/sueann-chua/vastNUS.git"
+    },
+    "author": "sue-ann megan",
+    "license": "ISC",
+    "bugs": {
+      "url": "https://github.com/sueann-chua/vastNUS/issues"
+    },
+    "homepage": "https://github.com/sueann-chua/vastNUS#readme",
+    "dependencies": {
+      "express": "^4.17.1",
+      "mongodb": "^3.6.9",
+      "pug": "^3.0.2"
+    },
+    "devDependencies": {
+      "nodemon": "^2.0.7"
+    }
+  }
