@@ -2,7 +2,6 @@
 <html lang="en">
 
   <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -18,13 +17,30 @@
     <link rel="stylesheet" href="assets/css/fontawesome.css">
     <link rel="stylesheet" href="assets/css/templatemo-host-cloud.css">
     <link rel="stylesheet" href="assets/css/owl.css">
-<!--
 
-Host Cloud Template
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-app.js"></script>
 
-https://templatemo.com/tm-541-host-cloud
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-database.js"></script>
 
--->
+        
+    <!--
+
+    Host Cloud Template
+
+    https://templatemo.com/tm-541-host-cloud
+
+    -->
+
+    <style> 
+      .box {
+        background-color: green;
+      }
+    </style> 
+
   </head>
 
   <body>
@@ -156,17 +172,10 @@ https://templatemo.com/tm-541-host-cloud
     </div>
     <!-- Banner Ends Here -->
 
-    <!-- Trusted Starts Here -->
-    <div class="trusted-section">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="trusted-section-heading">
-              <h4>Done by Megan and Sue-Ann</h4>
-            </div>
-          </div>
-        </div>
-      </div>
+    <!-- Trusted Starts Here --> 
+   
+    <div class="trusted-section" id="search-results-display"> 
+       <!-- THIS WILL BE THE SEARCH DISPLAY -->
     </div>
     <!-- Trusted Ends Here -->
 
@@ -194,4 +203,88 @@ https://templatemo.com/tm-541-host-cloud
     </script>
 
   </body>
+
+  <script>
+    console.log("App loaded");
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    var firebaseConfig = { // JSON (stores info for firebase config)
+      apiKey: "AIzaSyCZSmlv2BNeHLmDBt7gF2ZGr1Un-MDOTeA",
+      authDomain: "vastnus.firebaseapp.com",
+      databaseURL: "https://vastnus-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "vastnus",
+      storageBucket: "vastnus.appspot.com",
+      messagingSenderId: "462253060608",
+      appId: "1:462253060608:web:e7bdd275a258d1e219dee5",
+      measurementId: "G-WSL284JJ2D"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+    const dbRef = firebase.database().ref(); // Create a reference to the database. Local to this script tag.
+    const resultsContainer = document.getElementById("search-results-display");
+    console.log(resultsContainer);
+
+    // Data passed in here shld be a dictionary containing eg faculty name, RpCutOff.... 
+    function addResult(data) {
+      console.log("Data in addResult");
+      console.log(data);
+      var box = document.createElement("div");
+      box.classList += "box";
+      box.innerHTML = data["name"];
+      // var text = document.createElement("p");
+      // text.innerHTML = data["name"];
+      // box.appendChild(text);
+      resultsContainer.appendChild(box);
+    }
+
+    /*
+    // How to push to database [j do once]
+    dbRef.child("discountmodreg/courses").set({ // set writes data into that path. set for no random id, push for random id
+          "CS1101SSSSS": {
+              "name": "CS1101S",
+              "detailed-name": "Programming Methodology I",
+              "vacancy": "600",
+              "occupancy": 153,
+              "lecture-id": "L-L1-1226",  
+              "units": "4.00"
+          },
+          "CS2040SBBB": {
+              "name": "CS2040S",
+              "detailed-name": "Data Structures and Algorithms",
+              "vacancy": "600",
+              "occupancy": 153,
+              "lecture-id": "L-L1-1226",
+              "units": "4.00"
+          }
+      })
+      */
+    
+    // How to read from database
+    // returns state of database at time of retrieval
+    // add stuff before then
+    dbRef.child("discountmodreg/courses").on("value", (snapshot) => { 
+      // var data = snapshot.val();
+      // console.log(data["CS2040SBBB"]["name"]);
+
+      var data = snapshot.val();
+      console.log(data);
+      for (var element in data) {
+        console.log(data[element]);
+        addResult(data[element]);
+      }
+  
+    })
+
+    // create a container in the html (do within script tag bc everyth is self contained)
+    // assign an id to it in html
+    // then ref the container in the script tag 
+    // eg function addtocontainer
+    // for all the data we search (find a way to get the data they enter), use firebase to get the info they want
+    // pull all the data and manually comb thr the data until get smt that matches the criteria 
+    // how to get information from form tag
+    
+  </script>
+
 </html>
