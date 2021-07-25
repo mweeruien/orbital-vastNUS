@@ -208,7 +208,7 @@
       var box = document.createElement("div");
       box.classList += "box";
       var pageLink = data["link"];
-      box.innerHTML = "<h4>" + data["name"] + "</h4>" + "<br/>" + "<a href=" + pageLink + " target =" + "_blank" + ">Click here to view official NUS course page</a>"; 
+      box.innerHTML = "<h4>" + data["name"] + "</h4>" + "<br/>" + "<a href=" + pageLink + " target =" + "_blank>" + pageLink + "</a>"; 
       resultsContainer.appendChild(box);
     }
 
@@ -392,15 +392,24 @@
         console.log(data);
         for (var element in data) {
 
-          //console.log(data[element]);
+          // console.log(data[element]);
           // console.log(data[element]["gpa-CutOff"]);
           // console.log(data[element]["rp-CutOff"]);
           // console.log(data[element]["median-salary"]);
 
-          if ((searchform == "" || searchform == data[element]["name"].toLowerCase()) 
-              && (gpacutoff == "" || data[element]["gpa-CutOff"] <= gpacutoff) 
+          // Check if there is a match w the searchform and keywords
+          var keywordmatch = false;
+          for (var num in data[element]["keywords"]) {
+            if (searchform == data[element]["keywords"][num]) {
+              keywordmatch = true;
+            }
+          }
+          console.log(keywordmatch);
+
+          if ((gpacutoff == "" || data[element]["gpa-CutOff"] <= gpacutoff) 
               && (igpcutoff == "" || data[element]["rp-CutOff"] <= igpcutoff)
-              && (mediansalary == "" || data[element]["median-salary"] >= mediansalary)){
+              && (mediansalary == "" || data[element]["median-salary"] >= mediansalary)
+              && (searchform == "" || keywordmatch)){
             addResult(data[element]);
           }
         }
