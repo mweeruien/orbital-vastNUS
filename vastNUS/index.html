@@ -26,21 +26,15 @@
     <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-analytics.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-database.js"></script>
 
-        
-    <!--
-
-    Host Cloud Template
-
-    https://templatemo.com/tm-541-host-cloud
-
-    -->
-
     <style> 
-    /* TODOOOOOOO */
       .box {
-        background-color: green;
+        border-radius: 25px;
+        /* border: 1px solid black; */
+        background-color: #f4edff;
+        padding: 20px;
+        margin: 25px;
       }
-    </style> 
+    </style>
 
   </head>
 
@@ -81,13 +75,13 @@
                 <a class="nav-link" href="forum.html" target="_blank">Forum</a>
               </li>
             </ul>
-          </div>
+          <!-- </div>
           <div class="functional-buttons">
             <ul>
               <li><a href="#">Log in</a></li>
               <li><a href="#">Sign Up</a></li>
             </ul>
-          </div>
+          </div> -->
         </div>
       </nav>
     </header>
@@ -106,18 +100,18 @@
               	<form id="suggestion_form" name="gs" method="get" action="#">
                 <div class="searchText">
                   
-                  <input type="text" name="q" class="searchText" placeholder="Enter keywords to search for relevant courses..." autocomplete="on">
+                  <input type="text" name="q" class="searchText" placeholder="Enter keywords to search for relevant courses..." autocomplete="on" id="searchform">
                   
                   <ul>
                     <!-- SORTING OPTIONS -->
-                    <li style="color:white"><label<form action="/action_page.php">
+                    <!-- <li style="color:white"><label<form action="/action_page.php">
                       <label for="sortingOptions">Sorted By:</label>
                       <select id="sortingOptions" name="sortingOptions">
+                        <option value="Alphabetical">Alphabetical</option>
                         <option value="Relevance">Relevance</option>
                         <option value="Salary">Salary (High to Low)</option>
-                        <option value="Alphabetical">Alphabetical</option>
                       </select>
-                    </form></label></li>
+                    </form></label></li> -->
 
                     <!-- POLY GPA CUT OFF (gpacutoff)-->
                     <li style="color:white"><form>
@@ -213,11 +207,168 @@
 
       var box = document.createElement("div");
       box.classList += "box";
-      box.innerHTML = data["name"]; 
+      var pageLink = data["link"];
+      box.innerHTML = "<h4>" + data["name"] + "</h4>" + "<br/>" + "<a href=" + pageLink + " target =" + "_blank" + ">Click here to view official NUS course page</a>"; 
       resultsContainer.appendChild(box);
     }
 
-    // PUSH TO DATABASE HERE
+    dbRef.child("courses").set({ // set writes data into that path. set for no random id, push for random id
+      "Accountancy": {
+        "name": "Accountancy",
+        "faculty": "NUS Business School",
+        "rp-CutOff": 81.25,
+        "gpa-CutOff": 3.7,
+        "emp-rate": "90.9%",
+        "ft-emp-rate": "63.6%",
+        "median-salary": 3500,
+        "link": "https://bba.nus.edu.sg/academic-programmes/bba-accountancy-programme/introduction/",
+        "keywords" : ["accountancy", "finance", "nus business school", "nbs"]
+      },
+      "Architecture": {
+        "name": "Architecture",
+        "faculty": "School of Design & Environment",
+        "rp-CutOff": 70,
+        "gpa-CutOff": 3.45,
+        "emp-rate": "94.0%",
+        "ft-emp-rate": "91.0%",
+        "median-salary": 4000,
+        "link": "https://www.sde.nus.edu.sg/arch/about/",
+        "keywords" : ["architecture", "school of design and environment", "school of design",
+                      "school of environment", "design", "environment", "sde"]
+      },
+      "Biomedical Engineering": {
+        "name": "Biomedical Engineering",
+        "faculty": "Faculty of Engineering",
+        "rp-CutOff": 75,
+        "gpa-CutOff": 3.61,
+        "emp-rate": "95.8%",
+        "ft-emp-rate": "53.1%",
+        "median-salary": 3500,
+        "link": "https://www.eng.nus.edu.sg/bme/",
+        "keywords" : ["biomedical engineering", "biomedical", "engineering", "biomed", "faculty of engineering"]
+      },    
+      "Business": {
+        "name": "Business",
+        "faculty": "NUS Business School",
+        "rp-CutOff": 80,
+        "gpa-CutOff": 3.65,
+        "emp-rate": "96.3%",
+        "ft-emp-rate": "66.7%",
+        "median-salary": 4150,
+        "link": "https://bschool.nus.edu.sg/",
+        "keywords" : ["business", "business school", "nus business school"]
+      },
+      "Business Analytics": {
+        "name": "Business Analytics", 
+        "faculty": "School of Computing",
+        "rp-CutOff": 85,
+        "gpa-CutOff": 3.83,
+        "emp-rate": "97.1%",
+        "ft-emp-rate": "92.6%",
+        "median-salary": 5100,
+        "link": "https://www.comp.nus.edu.sg/programmes/ug/ba/",
+        "keywords" : ["business analytics","business", "analytics", "soc", "computing", "school of computing"]
+      },
+      "Computer Science": {
+        "name": "Computer Science",
+        "faculty": "School of Computing",
+        "rp-CutOff": 85,
+        "gpa-CutOff": 3.86,
+        "emp-rate": "97.1%",
+        "ft-emp-rate": "92.6%",
+        "median-salary": 5243,
+        "link": "https://www.comp.nus.edu.sg/programmes/ug/cs/",
+        "keywords" : ["cs", "computer science", "soc", "school of computing", "computing"]
+      }, 
+      "Information Systems": {
+        "name": "Information Systems",
+        "faculty": "School of Computing",
+        "rp-CutOff": 85,
+        "gpa-CutOff": 3.75,
+        "emp-rate": "98.6%",
+        "ft-emp-rate": "93.1%",
+        "median-salary": 4500,
+        "link": "https://www.comp.nus.edu.sg/programmes/ug/is/",
+        "keywords" : ["information systems", "is", "soc", "school of computing", "computing"]
+      },
+      "Law": {
+        "name": "Law",
+        "faculty": "Faculty of Law",
+        "rp-CutOff": 85,
+        "gpa-CutOff": 3.81,
+        "emp-rate": "91.8%",
+        "ft-emp-rate": "86.8%",
+        "median-salary": 5000,
+        "link": "https://law.nus.edu.sg/prospective-students/",
+        "keywords" : ["law", "faculty of law"]
+      },
+      "Life Science": {
+        "name": "Life Science",
+        "faculty": "Faculty of Science",
+        "rp-CutOff": 82.5,
+        "gpa-CutOff": 3.81,
+        "emp-rate": "86.0%",
+        "ft-emp-rate": "42.1%",
+        "median-salary": 3300,
+        "link": "https://www.dbs.nus.edu.sg/education/lifesciences/",
+        "keywords" : ["life science", "life sciences", 'science', "life", "faculty of science", "research"]
+      },
+      "Materials Science & Engineering": {
+        "name": "Materials Science & Engineering",
+        "faculty": "Faculty of Engineering",
+        "rp-CutOff": 85,
+        "gpa-CutOff": 3.61,
+        "emp-rate": "94.2%",
+        "ft-emp-rate": "69.6%",
+        "median-salary": 3700,
+        "link": "https://www.eng.nus.edu.sg/mse/",
+        "keywords" : ["materials science", "engineering", "materials", "science", "research", "faculty of engineering"]
+      },
+      "Nursing": {
+        "name": "Nursing",
+        "faculty": "School of Medicine",
+        "rp-CutOff": 66.25,
+        "gpa-CutOff": 3.25,
+        "emp-rate": "97.4%",
+        "ft-emp-rate": "92.2%",
+        "median-salary": 3250,
+        "link": "https://medicine.nus.edu.sg/nursing/",
+        "keywords" : ["nursing", "health", "healthcare", "school of medicine"]
+      },
+      "Pharmacy": {
+        "name": "Pharmacy",
+        "faculty": "Faculty of Science",
+        "rp-CutOff": 83,
+        "gpa-CutOff": 3.9,
+        "emp-rate": "99.3%",
+        "ft-emp-rate": "93.7%",
+        "median-salary": 3700,
+        "link": "https://pharmacy.nus.edu.sg",
+        "keywords" : ["pharmacy", "faculty of science", "healthcare", "health"]
+      },
+      "Psychology": {
+        "name": "Psychology",
+        "faculty": "Faculty of Arts and Social Sciences",
+        "rp-CutOff": 76.25,
+        "gpa-CutOff": 3.63,
+        "emp-rate": "90.4%",
+        "ft-emp-rate": "39.8%",
+        "median-salary": 3100,
+        "link": "https://fass.nus.edu.sg/psy/",
+        "keywords" : ["psychology", "psych", "brain", "thinking", "fass", "faculty of arts and social sciences"]
+      }, 
+      "Real Estate": {
+        "name": "Real Estate", 
+        "faculty": "School of Design & Environment",
+        "rp-CutOff": 66.25,
+        "gpa-CutOff": 3.44,
+        "emp-rate": "95.1%",
+        "ft-emp-rate": "68.6%",
+        "median-salary": 3600,
+        "link": "https://bschool.nus.edu.sg/real-estate/",
+        "keywords" : ["real estate", "housing", "school of design and environment", "design", "environment", "sde"]
+      }     
+  })
     
     // How to read from database
     // returns state of database at time of retrieval
@@ -230,9 +381,8 @@
       var gpacutoff = document.getElementById("gpacutoff").value;
       var igpcutoff = document.getElementById("igpcutoff").value;
       var mediansalary = document.getElementById("mediansalary").value;
-      // console.log(igpcutoff);
-      // console.log(gpacutoff);
-      // console.log(mediansalary);
+      var searchform = document.getElementById("searchform").value.toLowerCase();
+      console.log(searchform);
      
       dbRef.child("/courses").on("value", (snapshot) => { 
         // var data = snapshot.val();
@@ -241,11 +391,14 @@
         var data = snapshot.val();
         console.log(data);
         for (var element in data) {
+
           //console.log(data[element]);
-          console.log(data[element]["gpa-CutOff"]);
-          console.log(data[element]["rp-CutOff"]);
-          console.log(data[element]["median-salary"]);
-          if ((gpacutoff == "" || data[element]["gpa-CutOff"] <= gpacutoff) 
+          // console.log(data[element]["gpa-CutOff"]);
+          // console.log(data[element]["rp-CutOff"]);
+          // console.log(data[element]["median-salary"]);
+
+          if ((searchform == "" || searchform == data[element]["name"].toLowerCase()) 
+              && (gpacutoff == "" || data[element]["gpa-CutOff"] <= gpacutoff) 
               && (igpcutoff == "" || data[element]["rp-CutOff"] <= igpcutoff)
               && (mediansalary == "" || data[element]["median-salary"] >= mediansalary)){
             addResult(data[element]);
