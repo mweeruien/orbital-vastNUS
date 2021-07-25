@@ -36,6 +36,7 @@
     -->
 
     <style> 
+    /* TODOOOOOOO */
       .box {
         background-color: green;
       }
@@ -100,16 +101,15 @@
             <div class="header-text caption">
               <h2>Find your ideal course!</h2>
               <div id="search-section">
+
+                <!-- START OF FORM -->
               	<form id="suggestion_form" name="gs" method="get" action="#">
                 <div class="searchText">
                   
                   <input type="text" name="q" class="searchText" placeholder="Enter keywords to search for relevant courses..." autocomplete="on">
                   
                   <ul>
-                    <!-- <li><label><input type="checkbox" name="ext_com" value="1"><span>.com <em>($10/yr)</em></span></label></li>
-                    <li><label><input type="checkbox" name="ext_net" value="1"><span>.net <em>($12/yr)</em></span></label></li>
-                    <li><label><input type="checkbox" name="ext_org" value="1"><span>.org <em>($8/yr)</em></span></label></li>
-                    <li><label><input type="checkbox" name="ext_in" value="1"><span>.in <em>($6/yr)</em></span></label></li> -->
+                    <!-- SORTING OPTIONS -->
                     <li style="color:white"><label<form action="/action_page.php">
                       <label for="sortingOptions">Sorted By:</label>
                       <select id="sortingOptions" name="sortingOptions">
@@ -119,39 +119,19 @@
                       </select>
                     </form></label></li>
 
+                    <!-- POLY GPA CUT OFF (gpacutoff)-->
                     <li style="color:white"><form>
                       <label for="quantity">(Poly) GPA: </label>
-                      <input type="number" id="gpa" name="gpa" min="0" max="5" step = "0.1">
-                      <!-- input type="submit" -->
+                      <input type="number" id="gpacutoff" name="gpa" min="0" max="5" step = "0.1">
                     </form></li>
                     
+                    <!-- JC IGP (igpcutoff)-->
                     <li style="color:white"><form>
                       <label for="quantity">(JC) IGP: </label>
-                      <input type="number" id="igp" name="igp" min="50" max="90" step = "1.25">
-                      <!-- input type="submit" -->
+                      <input type="number" id="igpcutoff" name="igp" min="50" max="90" step = "1.25">
                     </form></li>
 
-                    <!--
-                    <li style="color:white"><form action="/action_page.php">
-                      <label for="gradeProfile">(JC) Grade profile:</label>
-                      <select id="gradeProfile" name="gradeProfile">
-                        <option value="AAA/A">AAA/A</option>
-                        <option value="AAA/B">AAA/B</option>
-                        <option value="AAA/C">AAA/C</option>
-                        <option value="AAB/B">AAB/B</option>
-                        <option value="ABB/B">ABB/B</option>
-                        <option value="BBB/B">BBB/B</option>
-                        <option value="BBB/C">BBB/C</option>
-                        <option value="BBC/B">BBC/B</option>
-                        <option value="BBC/C">BBC/C</option>
-                        <option value="BCC/C">BCC/C</option>
-                        <option value="CCC/B">CCC/B</option>
-                        <option value="CCC/C">CCC/C</option>
-                        <option value="CCD/B">CCD/B</option>
-                      </select>
-                    </form></li>
-                  -->
-
+                    <!-- MEDIAN SALARY (mediansalary) -->
                     <li style="color:white"><form>
                       <label for="quantity">Median salary: </label>
                       <input type="number" id="mediansalary" name="mediansalary" min="0" max = "100000" step = "100">
@@ -160,7 +140,7 @@
 
                   </ul>
                 </div>
-                    <input type="submit" name="results" class="main-button" value="Search Now">
+                    <input type="submit" name="results" class="main-button" value="Search Now" onclick="return submitForm()">
                  </form>
                <div class="advSearch_chkbox">
                </div>
@@ -224,58 +204,54 @@
     firebase.analytics();
     const dbRef = firebase.database().ref(); // Create a reference to the database. Local to this script tag.
     const resultsContainer = document.getElementById("search-results-display");
-    console.log(resultsContainer);
+    //console.log(resultsContainer);
 
     // Data passed in here shld be a dictionary containing eg faculty name, RpCutOff.... 
     function addResult(data) {
       console.log("Data in addResult");
       console.log(data);
+
       var box = document.createElement("div");
       box.classList += "box";
-      box.innerHTML = data["name"];
-      // var text = document.createElement("p");
-      // text.innerHTML = data["name"];
-      // box.appendChild(text);
+      box.innerHTML = data["name"]; 
       resultsContainer.appendChild(box);
     }
 
-    /*
-    // How to push to database [j do once]
-    dbRef.child("discountmodreg/courses").set({ // set writes data into that path. set for no random id, push for random id
-          "CS1101SSSSS": {
-              "name": "CS1101S",
-              "detailed-name": "Programming Methodology I",
-              "vacancy": "600",
-              "occupancy": 153,
-              "lecture-id": "L-L1-1226",  
-              "units": "4.00"
-          },
-          "CS2040SBBB": {
-              "name": "CS2040S",
-              "detailed-name": "Data Structures and Algorithms",
-              "vacancy": "600",
-              "occupancy": 153,
-              "lecture-id": "L-L1-1226",
-              "units": "4.00"
-          }
-      })
-      */
+    // PUSH TO DATABASE HERE
     
     // How to read from database
     // returns state of database at time of retrieval
     // add stuff before then
-    dbRef.child("discountmodreg/courses").on("value", (snapshot) => { 
-      // var data = snapshot.val();
-      // console.log(data["CS2040SBBB"]["name"]);
+    function submitForm() {
+      resultsContainer.innerHTML = "";
+      console.log("Form submitted");
 
-      var data = snapshot.val();
-      console.log(data);
-      for (var element in data) {
-        console.log(data[element]);
-        addResult(data[element]);
-      }
-  
-    })
+      //var sugg_form = document.getElementById("suggestion_form");
+      var gpacutoff = document.getElementById("gpacutoff").value;
+      var igpcutoff = document.getElementById("igpcutoff").value;
+      var mediansalary = document.getElementById("mediansalary").value;
+      //console.log(igpcutoff);
+      console.log(gpacutoff);
+      //  console.log(mediansalary);
+     
+      dbRef.child("/courses").on("value", (snapshot) => { 
+        // var data = snapshot.val();
+        // console.log(data["CS2040SBBB"]["name"]);
+
+        var data = snapshot.val();
+        console.log(data);
+        for (var element in data) {
+          console.log(data[element]);
+          console.log(gpacutoff);
+          console.log(data[element]["gpa-CutOff"]);
+          // console.log(data[element]["rp-CutOff"]);
+          // console.log(data[element]["median-salary"]);
+          if (gpacutoff == null || data[element]["gpa-CutOff"] <= gpacutoff) {
+            addResult(data[element]);
+          }
+        }
+      })
+    }
 
     // create a container in the html (do within script tag bc everyth is self contained)
     // assign an id to it in html

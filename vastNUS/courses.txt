@@ -1,0 +1,132 @@
+// How to push to database [j do once] 
+    /*
+    dbRef.child("courses").set({ // set writes data into that path. set for no random id, push for random id
+          "Business": {
+            "faculty": "NUS Business School",
+            "rp-CutOff": 80,
+            "gpa-CutOff": 3.65,
+            "emp-rate": "96.3%",
+            "ft-emp-rate": "66.7%",
+            "median-salary": "$4150",
+            "link": "https://bschool.nus.edu.sg/"
+          },
+          "Computer Science": {
+            "faculty": "School of Computing",
+            "rp-CutOff": 85,
+            "gpa-CutOff": 3.86,
+            "emp-rate": "97.1%",
+            "ft-emp-rate": "92.6%",
+            "median-salary": "$5243",
+            "link": "https://www.comp.nus.edu.sg/programmes/ug/cs/"
+          }, 
+          "Psychology": {
+            "faculty": "Faculty of Arts and Social Sciences",
+            "rp-CutOff": 76.25,
+            "gpa-CutOff": 3.63,
+            "emp-rate": "90.4%",
+            "ft-emp-rate": "39.8%",
+            "median-salary": "$3100",
+            "link": "https://fass.nus.edu.sg/psy/"
+          }, 
+          "Life Science": {
+            "faculty": "Faculty of Science",
+            "rp-CutOff": 82.5,
+            "gpa-CutOff": 3.81,
+            "emp-rate": "86.0%",
+            "ft-emp-rate": "42.1%",
+            "median-salary": "$3300",
+            "link": "https://www.dbs.nus.edu.sg/education/lifesciences/"
+          },
+          "Pharmacy": {
+            "faculty": "Faculty of Science",
+            "rp-CutOff": 83,
+            "gpa-CutOff": 3.9,
+            "emp-rate": "99.3%",
+            "ft-emp-rate": "93.7%",
+            "median-salary": "$3700",
+            "link": "https://pharmacy.nus.edu.sg"
+          },
+          "Law": {
+            "faculty": "Faculty of Law",
+            "rp-CutOff": 85,
+            "gpa-CutOff": 3.81,
+            "emp-rate": "91.8%",
+            "ft-emp-rate": "86.8%",
+            "median-salary": "$5000",
+            "link": "https://law.nus.edu.sg/prospective-students/"
+          },
+          "Information Systems": {
+            "faculty": "School of Computing",
+            "rp-CutOff": 85,
+            "gpa-CutOff": 3.75,
+            "emp-rate": "98.6%",
+            "ft-emp-rate": "93.1%",
+            "median-salary": "$4500",
+            "link": "https://www.comp.nus.edu.sg/programmes/ug/is/"
+          },
+          "Accountancy": {
+            "faculty": "NUS Business School",
+            "rp-CutOff": 81.25,
+            "gpa-CutOff": 3.7,
+            "emp-rate": "90.9%",
+            "ft-emp-rate": "63.6%",
+            "median-salary": "$3500",
+            "link": "https://bba.nus.edu.sg/academic-programmes/bba-accountancy-programme/introduction/"
+          },
+          "Architecture": {
+            "faculty": "School of Design & Environment",
+            "rp-CutOff": 70,
+            "gpa-CutOff": 3.45,
+            "emp-rate": "94.0%",
+            "ft-emp-rate": "91.0%",
+            "median-salary": "$4000",
+            "link": "https://www.sde.nus.edu.sg/arch/about/"
+          },
+          "Business Analytics": {
+            "faculty": "School of Computing",
+            "rp-CutOff": 85,
+            "gpa-CutOff": 3.83,
+            "emp-rate": "97.1%",
+            "ft-emp-rate": "92.6%",
+            "median-salary": "$5100",
+            "link": "https://www.comp.nus.edu.sg/programmes/ug/ba/"
+          },
+          "Biomedical Engineering": {
+            "faculty": "Faculty of Engineering",
+            "rp-CutOff": 75,
+            "gpa-CutOff": 3.61,
+            "emp-rate": "95.8%",
+            "ft-emp-rate": "53.1%",
+            "median-salary": "$3500",
+            "link": "https://www.eng.nus.edu.sg/bme/"
+          },
+          "Real Estate": {
+            "faculty": "School of Design & Environment",
+            "rp-CutOff": 66.25,
+            "gpa-CutOff": 3.44,
+            "emp-rate": "95.1%",
+            "ft-emp-rate": "68.6%",
+            "median-salary": "$3600",
+            "link": "https://bschool.nus.edu.sg/real-estate/"
+          },
+          "Nursing": {
+            "faculty": "School of Medicine",
+            "rp-CutOff": 66.25,
+            "gpa-CutOff": 3.25,
+            "emp-rate": "97.4%",
+            "ft-emp-rate": "92.2%",
+            "median-salary": "$3250",
+            "link": "https://medicine.nus.edu.sg/nursing/"
+          },
+          "Materials Science & Engineering": {
+            "faculty": "Faculty of Engineering",
+            "rp-CutOff": 85,
+            "gpa-CutOff": 3.61,
+            "emp-rate": "94.2%",
+            "ft-emp-rate": "69.6%",
+            "median-salary": "$3700",
+            "link": "https://www.eng.nus.edu.sg/mse/"
+          }
+      })
+    */
+    
