@@ -208,7 +208,14 @@
       var box = document.createElement("div");
       box.classList += "box";
       var pageLink = data["link"];
-      box.innerHTML = "<h4>" + data["name"] + "</h4>" + "<br/>" + data["details"] + "<br/>" + "<br/>" + "<a href=" + pageLink + " target =" + "_blank>" + pageLink + "</a>"; 
+      box.innerHTML = "<h4>" + data["name"] + "</h4>" + "<br/>" 
+                      + "<b>" + "Poly GPA: " + data["gpa-CutOff"] + "<br/>"
+                      + "JC IGP: " + data["rp-CutOff"] + "<br/>"
+                      + "Employment Rate: " + data["emp-rate"] + "<br/>"
+                      + "Full Time Employment Rate: " + data["ft-emp-rate"] + "<br/>"
+                      + "Median Gross Monthly Salary ($): " + data["median-salary"] + "</b>" + "<br/>" + "<br/>"
+                      + data["details"] + "<br/>" + "<br/>" 
+                      + "<a href=" + pageLink + " target =" + "_blank>" + pageLink + "</a>"; 
       resultsContainer.appendChild(box);
     }
 
