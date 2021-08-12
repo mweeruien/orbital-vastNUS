@@ -100,7 +100,7 @@
               	<form id="suggestion_form" name="gs" method="get" action="#">
                 <div class="searchText">
                   
-                  <input type="text" name="q" class="searchText" placeholder="Enter keywords to search for relevant courses..." autocomplete="on" id="searchform">
+                  <input type="text" name="q" class="searchText" placeholder="Enter keywords to search for relevant courses..." autocomplete="on" id="searchform" onkeypress="enter_to_search(event)">
                   
                   <ul>
                     <!-- SORTING OPTIONS -->
@@ -134,7 +134,7 @@
 
                   </ul>
                 </div>
-                    <input type="submit" name="results" class="main-button" value="Search Now" onclick="return submitForm()">
+                    <input type="submit" id="submitbutton" name="results" class="main-button" value="Search Now" onclick="return submitForm()">
                  </form>
                <div class="advSearch_chkbox">
                </div>
@@ -267,6 +267,16 @@
           elem.scrollIntoView({behavior: "smooth"});
         }
       })
+    }
+
+    // This function handles the pressing of the enter key to search
+    function enter_to_search(e) {
+      if (event.keyCode === 13) {
+        // Cancel the default action, if needed
+        event.preventDefault();
+        // Trigger the button element with a click
+        document.getElementById("submitbutton").click();
+      }
     }
     
   </script>
