@@ -226,6 +226,7 @@
     // add stuff before then
     function submitForm() {
       resultsContainer.innerHTML = "";
+      var resultsExist = false;
       console.log("Form submitted");
 
       //var sugg_form = document.getElementById("suggestion_form");
@@ -260,6 +261,7 @@
               && (igpcutoff == "" || data[element]["rp-CutOff"] <= igpcutoff)
               && (mediansalary == "" || data[element]["median-salary"] >= mediansalary)
               && (searchform == "" || keywordmatch)){
+            resultsExist = true;
             addResult(data[element]);
           }
 
@@ -267,6 +269,14 @@
           elem.scrollIntoView({behavior: "smooth"});
         }
       })
+
+      if (!resultsExist) {
+        console.log("No results found");
+        var box = document.createElement("div");
+        box.classList += "box";
+        box.innerHTML = "<h4> No Results Found </h4>";
+        resultsContainer.appendChild(box);  
+      }
     }
 
     // This function handles the pressing of the enter key to search
