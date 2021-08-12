@@ -75,13 +75,7 @@
                 <a class="nav-link" href="forum.html" target="_blank">Forum</a>
               </li>
             </ul>
-          <!-- </div>
-          <div class="functional-buttons">
-            <ul>
-              <li><a href="#">Log in</a></li>
-              <li><a href="#">Sign Up</a></li>
-            </ul>
-          </div> -->
+          </div>
         </div>
       </nav>
     </header>
@@ -103,15 +97,6 @@
                   <input type="text" name="q" class="searchText" placeholder="Enter keywords to search for relevant courses..." autocomplete="on" id="searchform" onkeypress="enter_to_search(event)">
                   
                   <ul>
-                    <!-- SORTING OPTIONS -->
-                    <!-- <li style="color:white"><label<form action="/action_page.php">
-                      <label for="sortingOptions">Sorted By:</label>
-                      <select id="sortingOptions" name="sortingOptions">
-                        <option value="Alphabetical">Alphabetical</option>
-                        <option value="Relevance">Relevance</option>
-                        <option value="Salary">Salary (High to Low)</option>
-                      </select>
-                    </form></label></li> -->
 
                     <!-- POLY GPA CUT OFF (gpacutoff)-->
                     <li style="color:white"><form>
@@ -147,13 +132,10 @@
     <!-- Banner Ends Here -->
 
     <!-- Trusted Starts Here --> 
-   
     <div class="trusted-section" id="search-results-display"> 
        <!-- THIS WILL BE THE SEARCH DISPLAY -->
     </div>
     <!-- Trusted Ends Here -->
-
-
 
     <!-- Bootstrap core JavaScript -->
     <script src="template/jquery/jquery.min.js"></script>
@@ -221,9 +203,9 @@
 
     // PUSH TO DATABASE HERE
     
-    // How to read from database
-    // returns state of database at time of retrieval
-    // add stuff before then
+
+    // This function runs when the form is submitted, querying from the database and
+    // adding relevant results to the results section
     function submitForm() {
       resultsContainer.innerHTML = "";
       var resultsExist = false;
@@ -234,7 +216,7 @@
       var igpcutoff = document.getElementById("igpcutoff").value;
       var mediansalary = document.getElementById("mediansalary").value;
       var searchform = document.getElementById("searchform").value.toLowerCase();
-      console.log(searchform);
+      console.log(searchform);  
      
       dbRef.child("/courses").on("value", (snapshot) => { 
         // var data = snapshot.val();
@@ -243,11 +225,6 @@
         var data = snapshot.val();
         console.log(data);
         for (var element in data) {
-
-          // console.log(data[element]);
-          // console.log(data[element]["gpa-CutOff"]);
-          // console.log(data[element]["rp-CutOff"]);
-          // console.log(data[element]["median-salary"]);
 
           // Check if there is a match w the searchform and keywords
           var keywordmatch = false;
@@ -261,22 +238,26 @@
               && (igpcutoff == "" || data[element]["rp-CutOff"] <= igpcutoff)
               && (mediansalary == "" || data[element]["median-salary"] >= mediansalary)
               && (searchform == "" || keywordmatch)){
-            resultsExist = true;
+            console.log("Data was found!");
             addResult(data[element]);
+            resultsExist = true;
           }
 
           var elem = document.getElementById("search-results-display");
-          elem.scrollIntoView({behavior: "smooth"});
+          elem.scrollIntoView({behavior: "smooth", inline: "nearest"});
         }
-      })
+        console.log(resultsExist);
 
-      if (!resultsExist) {
-        console.log("No results found");
-        var box = document.createElement("div");
-        box.classList += "box";
-        box.innerHTML = "<h4> No Results Found </h4>";
-        resultsContainer.appendChild(box);  
-      }
+        // After running the for loop, if no results exist, indicate it in the website
+        if (!resultsExist) {
+          console.log("No results found");
+          var box = document.createElement("div");
+          box.classList += "box";
+          box.innerHTML = "<h4> No Results Found </h4>";
+          resultsContainer.appendChild(box);  
+        }
+
+      })
     }
 
     // This function handles the pressing of the enter key to search
