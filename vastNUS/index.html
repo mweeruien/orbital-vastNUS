@@ -262,6 +262,9 @@
               && (searchform == "" || keywordmatch)){
             addResult(data[element]);
           }
+
+          var elem = document.getElementById("search-results-display");
+          elem.scrollIntoView({behavior: "smooth"});
         }
       })
     }
